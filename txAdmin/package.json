@@ -1,0 +1,48 @@
+{
+  "name": "txadmin",
+  "version": "1.0.0",
+  "description": "The official FiveM server management platform used by tens of thousands of servers.",
+  "module": "./core/index.js",
+  "type": "module",
+  "workspaces": [
+    "core",
+    "nui",
+    "panel",
+    "shared"
+  ],
+  "scripts": {
+    "build": "rimraf dist tmp_core_tsc && npm run build -w nui && npm run build -w panel && npm run build -w core",
+    "prepare": "husky install",
+    "test": "bash ./scripts/test_build.sh",
+    "typecheck": "npm run typecheck --workspaces",
+    "locale:rebase": "node scripts/locale-utils.js rebase",
+    "locale:check": "node scripts/locale-utils.js check --color"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tabarra/txAdmin.git"
+  },
+  "author": "André Tabarra",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tabarra/txAdmin/issues"
+  },
+  "homepage": "https://txadmin.gg/",
+  "dependencies": {
+    "chalk": "^5.3.0",
+    "humanize-duration": "^3.31.0",
+    "lodash-es": "^4.17.21"
+  },
+  "devDependencies": {
+    "@types/node": "^16.9.1",
+    "esbuild": "~0.19.11",
+    "eslint": "^8.56.0",
+    "typescript": "^5.3.3",
+    "husky": "^8.0.3",
+    "@types/humanize-duration": "^3.27.4",
+    "@commitlint/cli": "^18.4.4",
+    "@commitlint/config-conventional": "^18.4.4",
+    "@types/lodash-es": "^4.17.12",
+    "rimraf": "^5.0.5"
+  }
+}
